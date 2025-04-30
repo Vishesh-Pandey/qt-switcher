@@ -1,77 +1,99 @@
-/* Light Theme */
+/* High-Contrast Light Theme */
 @media (prefers-color-scheme: light) {
   body {
-    background-color: white;
-    color: black;
+    background-color: #ffffff;
+    color: #000000;
   }
 
   input {
-    background-color: #f0f0f0;
-    color: black;
-    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #000000;
+  }
+
+  li {
+    background-color: #ffffff;
+    color: #000000;
   }
 
   li.active {
-    background-color: #ddd;
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  li.active div:last-child {
+    color: #ffffff;
   }
 }
 
-/* Dark Theme */
+/* High-Contrast Dark Theme */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #121212;
-    color: white;
+    background-color: #000000;
+    color: #ffffff;
   }
 
   input {
-    background-color: #1e1e1e;
-    color: white;
-    border: 1px solid #444;
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+  }
+
+  li {
+    background-color: #000000;
+    color: #ffffff;
   }
 
   li.active {
-    background-color: #333;
+    background-color: #ffffff;
+    color: #000000;
   }
 
-  li div:last-child {
-    color: #aaa;
+  li.active div:last-child {
+    color: #000000;
   }
 }
 
-body {
-  font-family: Arial;
-  padding: 10px;
-  width: 100%;
+/* Override for forced light mode */
+body.force-light {
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 
-#search {
-  width: 100%;
-  padding: 8px;
-  font-size: 16px;
+body.force-light input {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 10px;
-  overflow-y: auto;
+body.force-light li {
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 
-li {
-  padding: 8px;
-  cursor: pointer;
+body.force-light li.active {
+  background-color: grey !important;
+  color: #ffffff !important;
 }
 
-li.active {
-  background-color: #eee;
+/* Override for forced dark mode */
+body.force-dark {
+  background-color: #000000 !important;
+  color: #ffffff !important;
 }
 
-li div:first-child {
-  font-weight: bold;
+body.force-dark input {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
 }
 
-li div:last-child {
-  font-size: 12px;
-  color: #555;
-  word-break: break-all;
+body.force-dark li {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.force-dark li.active {
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
