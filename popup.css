@@ -1,3 +1,43 @@
+/* Light Theme */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  input {
+    background-color: #f0f0f0;
+    color: black;
+    border: 1px solid #ccc;
+  }
+
+  li.active {
+    background-color: #ddd;
+  }
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: white;
+  }
+
+  input {
+    background-color: #1e1e1e;
+    color: white;
+    border: 1px solid #444;
+  }
+
+  li.active {
+    background-color: #333;
+  }
+
+  li div:last-child {
+    color: #aaa;
+  }
+}
+
 body {
   font-family: Arial;
   padding: 10px;
@@ -14,7 +54,6 @@ ul {
   list-style: none;
   padding: 0;
   margin-top: 10px;
-  max-height: 300px;
   overflow-y: auto;
 }
 
@@ -25,4 +64,14 @@ li {
 
 li.active {
   background-color: #eee;
+}
+
+li div:first-child {
+  font-weight: bold;
+}
+
+li div:last-child {
+  font-size: 12px;
+  color: #555;
+  word-break: break-all;
 }

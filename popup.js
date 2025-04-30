@@ -12,8 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   searchInput.addEventListener("input", () => {
     const query = searchInput.value.toLowerCase();
-    const filtered = allTabs.filter((tab) =>
-      tab.title.toLowerCase().includes(query)
+    const filtered = allTabs.filter(
+      (tab) =>
+        tab.title.toLowerCase().includes(query) ||
+        tab.url.toLowerCase().includes(query)
     );
     selectedIndex = 0;
     renderTabs(filtered);
@@ -45,7 +47,7 @@ function renderTabs(tabs) {
 
   tabs.forEach((tab, index) => {
     const li = document.createElement("li");
-    li.textContent = tab.title || tab.url;
+    li.innerHTML = `<div>${tab.title} <span style="opacity: 0.5">(${tab.url})</span></div>`;
     li.dataset.id = tab.id;
     if (index === selectedIndex) li.classList.add("active");
     tabList.appendChild(li);
