@@ -1,99 +1,154 @@
-/* High-Contrast Light Theme */
+:root {
+  --bg-light: #ffffff;
+  --bg-dark: #000000;
+  --text-light: #000000;
+  --text-dark: #ffffff;
+  --accent-light: #000000;
+  --accent-dark: #ffffff;
+  --active-light-bg: #000000;
+  --active-dark-bg: #ffffff;
+  --active-light-text: #ffffff;
+  --active-dark-text: #000000;
+  --active-force-light: grey;
+  --transition: 0.3s ease;
+  --radius: 0.5rem;
+  --padding: 0.6rem 1rem;
+  --border-width: 2px;
+}
+
+/* Base styles for all modes */
+body,
+input,
+li {
+  transition: background-color var(--transition), color var(--transition),
+    border-color var(--transition);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+li {
+  padding: var(--padding);
+  margin: 0.3rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  list-style: none;
+}
+
+li:hover {
+  opacity: 0.85;
+}
+
+/* Light Mode */
 @media (prefers-color-scheme: light) {
   body {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--bg-light);
+    color: var(--text-light);
   }
 
   input {
-    background-color: #ffffff;
-    color: #000000;
-    border: 2px solid #000000;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    border: var(--border-width) solid var(--accent-light);
   }
 
   li {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    border: var(--border-width) solid var(--accent-light);
   }
 
   li.active {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--active-light-bg);
+    color: var(--active-light-text);
   }
 
   li.active div:last-child {
-    color: #ffffff;
+    color: var(--active-light-text);
   }
 }
 
-/* High-Contrast Dark Theme */
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
   }
 
   input {
-    background-color: #000000;
-    color: #ffffff;
-    border: 2px solid #ffffff;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    border: var(--border-width) solid var(--accent-dark);
   }
 
   li {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    border: var(--border-width) solid var(--accent-dark);
   }
 
   li.active {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--active-dark-bg);
+    color: var(--active-dark-text);
   }
 
   li.active div:last-child {
-    color: #000000;
+    color: var(--active-dark-text);
   }
 }
 
-/* Override for forced light mode */
+/* Forced Light Mode */
 body.force-light {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+  background-color: var(--bg-light) !important;
+  color: var(--text-light) !important;
 }
 
 body.force-light input {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border: 2px solid #000000 !important;
+  background-color: var(--bg-light) !important;
+  color: var(--text-light) !important;
+  border: var(--border-width) solid var(--accent-light) !important;
 }
 
 body.force-light li {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+  background-color: var(--bg-light) !important;
+  color: var(--text-light) !important;
+  border: var(--border-width) solid var(--accent-light) !important;
 }
 
 body.force-light li.active {
-  background-color: grey !important;
-  color: #ffffff !important;
+  background-color: var(--active-force-light) !important;
+  color: var(--active-light-text) !important;
 }
 
-/* Override for forced dark mode */
+/* Forced Dark Mode */
 body.force-dark {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+  background-color: var(--bg-dark) !important;
+  color: var(--text-dark) !important;
 }
 
 body.force-dark input {
-  background-color: #000000 !important;
-  color: #ffffff !important;
-  border: 2px solid #ffffff !important;
+  background-color: var(--bg-dark) !important;
+  color: var(--text-dark) !important;
+  border: var(--border-width) solid var(--accent-dark) !important;
 }
 
 body.force-dark li {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+  background-color: var(--bg-dark) !important;
+  color: var(--text-dark) !important;
+  border: var(--border-width) solid var(--accent-dark) !important;
 }
 
 body.force-dark li.active {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+  background-color: var(--active-dark-bg) !important;
+  color: var(--active-dark-text) !important;
+}
+
+#tabs-list {
+  max-height: 300px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+input {
+  border: none;
+  outline: none;
+  width: 100%;
 }

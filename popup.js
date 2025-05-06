@@ -35,18 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
       window.close();
     }
 
-    // NEW: Alt + Up or Down to move tab
+    // Alt + Arrow keys to move tab
     if (e.altKey && (e.key === "ArrowDown" || e.key === "ArrowUp")) {
       const tabId = Number(visibleTabs[selectedIndex].dataset.id);
 
       chrome.tabs.get(tabId, (tab) => {
         const newIndex = e.key === "ArrowDown" ? tab.index + 1 : tab.index - 1;
         chrome.tabs.move(tabId, { index: newIndex }, () => {
-          // Refresh the tab list after moving
           chrome.tabs.query({}, (tabs) => {
             allTabs = tabs;
             const movedTab = allTabs.find((t) => t.id === tabId);
-            // Update selectedIndex based on new position
             selectedIndex = allTabs.findIndex((t) => t.id === movedTab.id);
             renderTabs(allTabs);
           });
@@ -57,6 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     visibleTabs.forEach((li, i) => {
       li.classList.toggle("active", i === selectedIndex);
+      if (i === selectedIndex) {
+        li.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
     });
   });
 });
@@ -72,6 +73,12 @@ function renderTabs(tabs) {
     if (index === selectedIndex) li.classList.add("active");
     tabList.appendChild(li);
   });
+
+  // Ensure active tab is scrolled into view on render
+  const activeLi = tabList.querySelector("li.active");
+  if (activeLi) {
+    activeLi.scrollIntoView({ behavior: "auto", block: "nearest" });
+  }
 }
 
 document.addEventListener("keydown", (e) => {
